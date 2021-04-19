@@ -1,19 +1,19 @@
 import React from 'react';
 import Head from 'next/head';
+import SideMenu from '../components/SideMenu';
 
 const Home: React.FC = () => {
 	return (
-		<div>
+		<main>
 			<Head>
-				<title>Home</title>
-
+				<title>Next Movies</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main>
-				<h1>Hello world</h1>
-			</main>
-		</div>
+			<SideMenu />
+
+			<h1>Hello world</h1>
+		</main>
 	);
 };
 
