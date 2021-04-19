@@ -10,6 +10,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+	font-size: 62.5%;
 	html {
     height: 100%;
   }
@@ -20,6 +21,7 @@ export default createGlobalStyle`
 		--text-secondary: #38466B;
 		--text-light: #78889E;
 		--text-hover: #E9316E;
+		--text-hover2: #EF6B96;
 		--input-background: #F1F7FF;
 		--button: #E71D60;
 		--button-text: #FDEFF4;
@@ -50,4 +52,8 @@ export default createGlobalStyle`
 		font-weight: 700;
 
   }
+
+	main {
+		display: flex;
+	}
 `;
