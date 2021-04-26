@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { CgChevronLeftO, CgChevronRightO } from 'react-icons/cg';
+import { GetServerSideProps } from 'next';
 import SideMenu from '../components/SideMenu';
 
 import {
@@ -16,8 +17,26 @@ import {
 import WatchButton from '../components/WatchButton';
 import PlusButton from '../components/PlusButton';
 import SideContent from '../components/SideContent';
+import api from '../services/api';
 
-const Home: React.FC = () => {
+type TvShow = {
+	id: number;
+	name: string;
+	poster_path: string;
+	backdrop_path: string;
+};
+
+type HomeProps = {
+	series: TvShow[];
+	popularSeries: TvShow[];
+};
+
+const Home = ({ series, popularSeries }: HomeProps) => {
+	const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
+
+	const imageBaseHighResolutionURL =
+		'https://image.tmdb.org/t/p/t/p/w1920_and_h800_multi_faces';
+
 	return (
 		<main>
 			<Head>
@@ -37,7 +56,7 @@ const Home: React.FC = () => {
 
 				<MainBanner>
 					<Image
-						src="/supernatural.jpg"
+						src={`${imageBaseHighResolutionURL}${popularSeries[1].backdrop_path}`}
 						alt="imagem do filme em destaque"
 						width={1920}
 						height={1080}
@@ -61,53 +80,19 @@ const Home: React.FC = () => {
 					</PlayingNowHeader>
 
 					<PlayingNowContent>
-						<Card>
-							<PlusButton />
-							<WatchButton />
-							<Image
-								src="/falcon.jpg"
-								alt="imagem das series no momento"
-								width={2000}
-								height={3000}
-								objectFit="cover"
-							/>
-						</Card>
-
-						<Card>
-							<PlusButton />
-							<WatchButton />
-							<Image
-								src="/good-doctor.jpg"
-								alt="imagem das series no momento"
-								width={2000}
-								height={3000}
-								objectFit="cover"
-							/>
-						</Card>
-
-						<Card>
-							<PlusButton />
-							<WatchButton />
-							<Image
-								src="/flash.jpg"
-								alt="imagem das series no momento"
-								width={2000}
-								height={3000}
-								objectFit="cover"
-							/>
-						</Card>
-
-						<Card>
-							<PlusButton />
-							<WatchButton />
-							<Image
-								src="/grays-anatomy.jpg"
-								alt="imagem das series no momento"
-								width={2000}
-								height={3000}
-								objectFit="cover"
-							/>
-						</Card>
+						{series.map(serie => (
+							<Card key={serie.id}>
+								<PlusButton />
+								<WatchButton />
+								<Image
+									src={`${imageBaseURL}${serie.poster_path}`}
+									alt={serie.name}
+									width={2000}
+									height={3000}
+									objectFit="cover"
+								/>
+							</Card>
+						))}
 					</PlayingNowContent>
 				</PlayingNow>
 			</HomeSection>
@@ -118,3 +103,24 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+	const { data } = await api.get(
+		`trending/tv/week?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt-br`
+	);
+
+	const series = data.results.filter((_, index: number) => index <= 3);
+
+	const response = await api.get(
+		'tv/on_the_air?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=1'
+	);
+
+	const popularSeries = response.data.results;
+
+	return {
+		props: {
+			series,
+			popularSeries,
+		},
+	};
+};
