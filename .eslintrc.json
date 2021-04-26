@@ -39,6 +39,7 @@
 		"@typescript-eslint/no-use-before-define": ["error"],
 		"react/jsx-props-no-spreading": "off",
 		"jsx-a11y/anchor-is-valid": "off",
+		"camelcase" : "off",
 		"import/extensions": [
       "error",
       "ignorePackages",
