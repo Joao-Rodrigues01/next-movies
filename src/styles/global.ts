@@ -24,6 +24,7 @@ export default createGlobalStyle`
 		--text-hover2: #EF6B96;
 		--input-background: #F1F7FF;
 		--button: #E71D60;
+		--button-background: #FDE8EF;
 		--button-text: #FDEFF4;
 		--button-secondary: #FDE8EF;
 
