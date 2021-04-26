@@ -32,3 +32,57 @@ export const SearchBarContainer = styled.div`
 		}
 	}
 `;
+
+export const PopularMoviesContainer = styled.section`
+	margin-top: 1.8rem;
+	h2 {
+		font-size: 1rem;
+		margin-bottom: 1.7rem;
+	}
+
+	width: 16.375rem;
+	height: 19.7rem;
+
+	display: flex;
+	flex-direction: column;
+
+	button {
+		height: 3rem;
+		background: var(--button-background);
+		color: var(--button);
+
+		font-size: 0.8rem;
+		font-weight: bold;
+	}
+`;
+
+export const PopularMoviesCard = styled.div`
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1.2rem;
+
+	img {
+		width: 64px;
+		height: 90px;
+	}
+
+	span {
+		font-size: 0.875rem;
+		color: var(--text-light);
+		font-weight: bold;
+	}
+`;
+
+export const PopularMoviesCardMovieInfo = styled.div`
+	p {
+		font-size: 0.875rem;
+		color: var(--text);
+		font-weight: bold;
+	}
+
+	span {
+		color: var(--text-light);
+		font-size: 0.785rem;
+		font-weight: bold;
+	}
+`;
