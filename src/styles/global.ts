@@ -41,6 +41,10 @@ export default createGlobalStyle`
 	#__next {
 		height: 100%;
 	}
+	button {
+		cursor: pointer;
+		border: 0;
+	}
 
 	body, input, button {
     font: 1rem/1.48 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
