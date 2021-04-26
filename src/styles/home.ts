@@ -87,7 +87,3 @@ export const Card = styled.div`
 		right: 0.85rem;
 	}
 `;
-
-export const SearchSection = styled.div`
-	border-left: 2px solid #e4ecff;
-`;
