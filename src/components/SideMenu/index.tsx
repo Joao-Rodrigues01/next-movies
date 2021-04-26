@@ -1,7 +1,25 @@
 import React from 'react';
 
+import Link from 'next/link';
+
 import { HiHome, HiShieldCheck } from 'react-icons/hi';
-import { FaCompass, FaTrophy, FaUser } from 'react-icons/fa';
+
+import { GiAncientSword } from 'react-icons/gi';
+
+import { RiSlideshow3Fill } from 'react-icons/ri';
+
+import { IoSettingsSharp, IoLogOut } from 'react-icons/io5';
+
+import {
+	FaCompass,
+	FaTrophy,
+	FaUser,
+	FaClock,
+	FaStar,
+	FaDownload,
+	FaVideo,
+} from 'react-icons/fa';
+
 import { Container, Menu } from './styles';
 
 const SideMenu: React.FC = () => {
@@ -11,30 +29,106 @@ const SideMenu: React.FC = () => {
 			<Menu>
 				<h1>MENU</h1>
 
-				<a href="/">
-					<HiHome size={22} color="#E9316E" />
-					Home
-				</a>
+				<Link href="/">
+					<a className="active">
+						<HiHome size={20} color="#E9316E" />
+						Home
+					</a>
+				</Link>
 
-				<a href="/">
-					<HiShieldCheck size={22} color="#78889E" />
-					Community
-				</a>
+				<Link href="/">
+					<a>
+						<HiShieldCheck size={20} color="#78889E" />
+						Community
+					</a>
+				</Link>
 
-				<a href="/">
-					<FaCompass size={22} color="#78889E" />
-					Discover
-				</a>
+				<Link href="/">
+					<a>
+						<FaCompass size={20} color="#78889E" />
+						Discover
+					</a>
+				</Link>
 
-				<a href="/">
-					<FaTrophy size={22} color="#78889E" />
-					Awards
-				</a>
+				<Link href="/">
+					<a>
+						<FaTrophy size={20} color="#78889E" />
+						Awards
+					</a>
+				</Link>
 
-				<a href="/">
-					<FaUser size={22} color="#78889E" />
-					Celebs
-				</a>
+				<Link href="/">
+					<a>
+						<FaUser size={20} color="#78889E" />
+						Celebs
+					</a>
+				</Link>
+			</Menu>
+
+			<Menu>
+				<h1>LIBRARY</h1>
+
+				<Link href="/">
+					<a>
+						<FaClock size={20} color="#78889E" />
+						Recent
+					</a>
+				</Link>
+
+				<Link href="/">
+					<a>
+						<FaStar size={20} color="#78889E" />
+						Top Rated
+					</a>
+				</Link>
+
+				<Link href="/">
+					<a>
+						<FaDownload size={20} color="#78889E" />
+						Downloaded
+					</a>
+				</Link>
+			</Menu>
+
+			<Menu>
+				<h1>CATEGORY</h1>
+				<Link href="/">
+					<a>
+						<RiSlideshow3Fill size={20} color="#78889E" />
+						TV - Show
+					</a>
+				</Link>
+
+				<Link href="/">
+					<a>
+						<FaVideo size={20} color="#78889E" />
+						Movie
+					</a>
+				</Link>
+
+				<Link href="/">
+					<a>
+						<GiAncientSword size={20} color="#78889E" />
+						Anime
+					</a>
+				</Link>
+			</Menu>
+
+			<Menu>
+				<h1>GENERAL</h1>
+				<Link href="/">
+					<a>
+						<IoSettingsSharp size={20} color="#78889E" />
+						Settings
+					</a>
+				</Link>
+
+				<Link href="/">
+					<a>
+						<IoLogOut size={20} color="#78889E" />
+						Logout
+					</a>
+				</Link>
 			</Menu>
 		</Container>
 	);
