@@ -8,7 +8,6 @@ import {
 	HomeSection,
 	NavHeader,
 	MainBanner,
-	SearchSection,
 	PlayingNow,
 	Card,
 	PlayingNowHeader,
@@ -16,6 +15,7 @@ import {
 } from '../styles/home';
 import WatchButton from '../components/WatchButton';
 import PlusButton from '../components/PlusButton';
+import SideContent from '../components/SideContent';
 
 const Home: React.FC = () => {
 	return (
@@ -112,7 +112,7 @@ const Home: React.FC = () => {
 				</PlayingNow>
 			</HomeSection>
 
-			<SearchSection />
+			<SideContent />
 		</main>
 	);
 };
