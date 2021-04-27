@@ -48,6 +48,12 @@ export default class MyDocument extends Document {
 						rel="stylesheet"
 					/>
 
+					<link rel="preconnect" href="https://fonts.gstatic.com" />
+					<link
+						href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+						rel="stylesheet"
+					/>
+
 					<link rel="icon" href="https://rocketseat.com.br/favicon.ico" />
 				</Head>
 				<body>
