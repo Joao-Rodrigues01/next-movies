@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { CgChevronLeftO, CgChevronRightO } from 'react-icons/cg';
@@ -10,7 +10,6 @@ import {
 	NavHeader,
 	MainBanner,
 	PlayingNow,
-	Card,
 	PlayingNowHeader,
 	PlayingNowContent,
 } from '../styles/home';
@@ -18,6 +17,7 @@ import WatchButton from '../components/WatchButton';
 import PlusButton from '../components/PlusButton';
 import SideContent from '../components/SideContent';
 import api from '../services/api';
+import PlayingNowCard from '../components/PlayingNowCard';
 
 type TvShow = {
 	id: number;
@@ -26,16 +26,37 @@ type TvShow = {
 	backdrop_path: string;
 };
 
+type Movie = {
+	id: number;
+	title: string;
+	poster_path: string;
+	vote_average: number;
+};
+
 type HomeProps = {
 	series: TvShow[];
 	popularSeries: TvShow[];
+	popularMovies: Movie[];
 };
 
-const Home = ({ series, popularSeries }: HomeProps) => {
-	const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
-
+const Home = ({ series, popularSeries, popularMovies }: HomeProps) => {
 	const imageBaseHighResolutionURL =
 		'https://image.tmdb.org/t/p/t/p/w1920_and_h800_multi_faces';
+
+	const [position, setPosition] = useState<number>(0);
+	const [active, setActive] = useState<number>(0);
+
+	function prevMovie() {
+		if (position <= 0) return;
+		setActive(prev => prev - 1);
+		setPosition(prev => prev - 223);
+	}
+
+	function nextMovie() {
+		if (active === series.length - 2) return;
+		setActive(prev => prev + 1);
+		setPosition(prev => prev + 223);
+	}
 
 	return (
 		<main>
@@ -63,6 +84,13 @@ const Home = ({ series, popularSeries }: HomeProps) => {
 						objectFit="cover"
 					/>
 
+					<div id="serie-info">
+						<p>SEASON 1</p>
+						<h1>{popularSeries[1].name}</h1>
+
+						<span>ACTION, FANTASY, COMEDY</span>
+					</div>
+
 					<div id="buttons">
 						<WatchButton />
 						<PlusButton />
@@ -74,30 +102,22 @@ const Home = ({ series, popularSeries }: HomeProps) => {
 						<h3>Now Playing</h3>
 
 						<div>
-							<CgChevronLeftO size={32} color="#91a0b6" />
-							<CgChevronRightO size={32} color="#91a0b6" />
+							<CgChevronLeftO onClick={prevMovie} size={32} color="#c6d1eb" />
+							<CgChevronRightO onClick={nextMovie} size={32} color="#c6d1eb" />
 						</div>
 					</PlayingNowHeader>
 
-					<PlayingNowContent>
+					<PlayingNowContent
+						style={{ transform: `translateX(-${position}px)` }}
+					>
 						{series.map(serie => (
-							<Card key={serie.id}>
-								<PlusButton />
-								<WatchButton />
-								<Image
-									src={`${imageBaseURL}${serie.poster_path}`}
-									alt={serie.name}
-									width={2000}
-									height={3000}
-									objectFit="cover"
-								/>
-							</Card>
+							<PlayingNowCard key={serie.id} serie={serie} />
 						))}
 					</PlayingNowContent>
 				</PlayingNow>
 			</HomeSection>
 
-			<SideContent />
+			<SideContent popularMovies={popularMovies} />
 		</main>
 	);
 };
@@ -109,18 +129,26 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		`trending/tv/week?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt-br`
 	);
 
-	const series = data.results.filter((_, index: number) => index <= 3);
+	const series = data.results;
 
 	const response = await api.get(
 		'tv/on_the_air?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=1'
 	);
-
 	const popularSeries = response.data.results;
+
+	const movies = await api.get(
+		'https://api.themoviedb.org/3/movie/popular?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=1'
+	);
+
+	const popularMovies = movies.data.results.filter(
+		(_, index: number) => index <= 1
+	);
 
 	return {
 		props: {
 			series,
 			popularSeries,
+			popularMovies,
 		},
 	};
 };
