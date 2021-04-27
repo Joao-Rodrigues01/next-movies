@@ -11,7 +11,20 @@ import {
 	PopularMoviesCardMovieInfo,
 } from './styles';
 
-const SideContent = () => {
+type Movie = {
+	id: number;
+	title: string;
+	poster_path: string;
+	vote_average: number;
+};
+
+type SideContentProps = {
+	popularMovies: Movie[];
+};
+
+const SideContent = ({ popularMovies }: SideContentProps) => {
+	const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
+
 	return (
 		<Container>
 			<SearchBarContainer>
@@ -22,37 +35,23 @@ const SideContent = () => {
 			<PopularMoviesContainer>
 				<h2>Popular Movies</h2>
 
-				<PopularMoviesCard>
-					<Image
-						src="/mortal.jpg"
-						alt="imagem dos filmes populares"
-						width={2000}
-						height={3000}
-						objectFit="cover"
-					/>
-					<PopularMoviesCardMovieInfo>
-						<p>Mortal Kombat</p>
-						<span>Action, Fantasy</span>
-					</PopularMoviesCardMovieInfo>
+				{popularMovies.map(movie => (
+					<PopularMoviesCard key={movie.id}>
+						<Image
+							src={`${imageBaseURL}${movie.poster_path}`}
+							alt={movie.title}
+							width={2000}
+							height={3000}
+							objectFit="cover"
+						/>
+						<PopularMoviesCardMovieInfo>
+							<p>{movie.title}</p>
+							<span>Action, Fantasy</span>
+						</PopularMoviesCardMovieInfo>
 
-					<span>PG - 13</span>
-				</PopularMoviesCard>
-
-				<PopularMoviesCard>
-					<Image
-						src="/kong.jpg"
-						alt="imagem dos filmes populares"
-						width={2000}
-						height={3000}
-						objectFit="cover"
-					/>
-					<PopularMoviesCardMovieInfo>
-						<p>Godzilla vs. Kong</p>
-						<span>Action, Fantasy</span>
-					</PopularMoviesCardMovieInfo>
-
-					<span>NC - 17</span>
-				</PopularMoviesCard>
+						<span>AVG : {movie.vote_average}</span>
+					</PopularMoviesCard>
+				))}
 
 				<button type="button">See More</button>
 			</PopularMoviesContainer>
