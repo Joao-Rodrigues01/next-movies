@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 	border-left: 2px solid #e4ecff;
+
 	padding: 1.8rem 2.5rem;
 
 	display: flex;
@@ -58,7 +59,7 @@ export const PopularMoviesContainer = styled.section`
 
 export const PopularMoviesCard = styled.div`
 	display: flex;
-	gap: 1rem;
+	gap: 0.7rem;
 	margin-bottom: 1.2rem;
 
 	img {
@@ -70,6 +71,7 @@ export const PopularMoviesCard = styled.div`
 		font-size: 0.875rem;
 		color: var(--text-light);
 		font-weight: bold;
+		white-space: nowrap;
 	}
 `;
 
@@ -78,6 +80,7 @@ export const PopularMoviesCardMovieInfo = styled.div`
 		font-size: 0.875rem;
 		color: var(--text);
 		font-weight: bold;
+		white-space: nowrap;
 	}
 
 	span {

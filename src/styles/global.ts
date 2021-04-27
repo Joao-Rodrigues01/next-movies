@@ -15,6 +15,7 @@ export default createGlobalStyle`
     height: 100%;
   }
 
+
 	:root {
 		--white: #fff;
 		--text:  #3A476C;
@@ -60,5 +61,6 @@ export default createGlobalStyle`
 
 	main {
 		display: flex;
+
 	}
 `;

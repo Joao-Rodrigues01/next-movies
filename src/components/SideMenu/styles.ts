@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.aside`
 	height: 100vh;
 	width: 234px;
+	background: #fff;
 	border-right: 2px solid #e4ecff;
 	padding-left: 40px;
 	padding-top: 10px;

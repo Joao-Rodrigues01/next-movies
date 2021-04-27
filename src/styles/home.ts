@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const HomeSection = styled.section`
-	margin: 1.5rem 2.5rem;
+	margin: 1.1rem 3rem;
+	overflow: hidden;
 `;
 
 export const NavHeader = styled.nav`
@@ -24,9 +25,35 @@ export const NavHeader = styled.nav`
 
 export const MainBanner = styled.div`
 	position: relative;
+
 	img {
-		height: 300px;
+		height: 306.4px;
 		width: 880px;
+	}
+
+	#serie-info {
+		position: absolute;
+		bottom: 6rem;
+		left: 3.5rem;
+
+		p {
+			font-size: 0.7rem;
+			color: #f5f5f5;
+			font-weight: bold;
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			color: #fff;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+		}
+
+		span {
+			color: #ddd;
+			font-size: 0.65rem;
+			font-weight: 600;
+		}
 	}
 
 	#buttons {
@@ -40,11 +67,15 @@ export const MainBanner = styled.div`
 	}
 `;
 
-export const PlayingNow = styled.section``;
+export const PlayingNow = styled.section`
+	width: 100%;
+	max-width: 900px;
+`;
 
 export const PlayingNowContent = styled.div`
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	display: flex;
+	gap: 2.2rem;
+	transition: transform 0.4s;
 `;
 
 export const PlayingNowHeader = styled.div`
@@ -52,6 +83,10 @@ export const PlayingNowHeader = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 1.5rem;
+
+	svg {
+		cursor: pointer;
+	}
 
 	h3 {
 		font-size: 1rem;
@@ -65,25 +100,5 @@ export const PlayingNowHeader = styled.div`
 		gap: 0.8rem;
 		margin-right: 2.5rem;
 		padding-bottom: 0.8rem;
-	}
-`;
-
-export const Card = styled.div`
-	position: relative;
-	width: 182px;
-	height: 274px;
-
-	button:nth-child(1) {
-		position: absolute;
-		z-index: 1;
-		right: 0.5rem;
-		top: 0.4rem;
-	}
-
-	button:nth-child(2) {
-		position: absolute;
-		z-index: 1;
-		bottom: 1rem;
-		right: 0.85rem;
 	}
 `;
