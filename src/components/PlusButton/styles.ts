@@ -12,13 +12,19 @@ export const Container = styled.button`
 		align-items: center;
 		justify-content: center;
 
-		background: rgba(155, 155, 155, 0.85);
-		filter: blur(0.8px);
+		background: rgba(155, 155, 155, 0.2);
+		filter: blur(7px);
+		backdrop-filter: blur(10px);
+		transition: all 0.2s;
+		&:hover {
+			background: #fff;
+		}
 	}
 	span {
 		position: absolute;
 		top: 0.05rem;
 		left: 0.02rem;
+		backdrop-filter: blur(2px);
 
 		height: 2.7rem;
 		width: 2.7rem;
@@ -26,6 +32,12 @@ export const Container = styled.button`
 		color: white;
 		font-size: 1.75rem;
 		z-index: 10;
+		transition: all 0.2s;
+
+		&:hover {
+			background: #fff;
+			color: var(--button);
+		}
 	}
 `;
 
