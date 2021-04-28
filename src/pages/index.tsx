@@ -53,7 +53,7 @@ const Home = ({ series, popularSeries, popularMovies }: HomeProps) => {
 	}
 
 	function nextMovie() {
-		if (active === series.length - 2) return;
+		if (active === series.length - 4) return;
 		setActive(prev => prev + 1);
 		setPosition(prev => prev + 223);
 	}
