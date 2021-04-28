@@ -1,23 +1,14 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
+import React from 'react';
 import Image from 'next/image';
-import { CgChevronLeftO, CgChevronRightO } from 'react-icons/cg';
 import { GetServerSideProps } from 'next';
-import SideMenu from '../components/SideMenu';
 
-import {
-	HomeSection,
-	NavHeader,
-	MainBanner,
-	PlayingNow,
-	PlayingNowHeader,
-	PlayingNowContent,
-} from '../styles/home';
+import Link from 'next/link';
+import { HomeSection, NavHeader, MainBanner } from '../styles/home';
 import WatchButton from '../components/WatchButton';
 import PlusButton from '../components/PlusButton';
 import SideContent from '../components/SideContent';
 import api from '../services/api';
-import PlayingNowCard from '../components/PlayingNowCard';
+import Slider from '../components/Slider';
 
 type TvShow = {
 	id: number;
@@ -43,36 +34,21 @@ const Home = ({ series, popularSeries, popularMovies }: HomeProps) => {
 	const imageBaseHighResolutionURL =
 		'https://image.tmdb.org/t/p/t/p/w1920_and_h800_multi_faces';
 
-	const [position, setPosition] = useState<number>(0);
-	const [active, setActive] = useState<number>(0);
-
-	function prevMovie() {
-		if (position <= 0) return;
-		setActive(prev => prev - 1);
-		setPosition(prev => prev - 223);
-	}
-
-	function nextMovie() {
-		if (active === series.length - 4) return;
-		setActive(prev => prev + 1);
-		setPosition(prev => prev + 223);
-	}
-
 	return (
 		<main>
-			<Head>
-				<title>Next Movies</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-			<SideMenu />
-
 			<HomeSection>
 				<NavHeader>
-					<a href="/">Movie</a>
-					<a href="/" className="active">
-						TV Show
-					</a>
-					<a href="/">Anime</a>
+					<Link href="/movies">
+						<a>Movie</a>
+					</Link>
+
+					<Link href="/">
+						<a className="active">TV Show</a>
+					</Link>
+
+					<Link href="#">
+						<a>Anime</a>
+					</Link>
 				</NavHeader>
 
 				<MainBanner>
@@ -97,24 +73,7 @@ const Home = ({ series, popularSeries, popularMovies }: HomeProps) => {
 					</div>
 				</MainBanner>
 
-				<PlayingNow>
-					<PlayingNowHeader>
-						<h3>Now Playing</h3>
-
-						<div>
-							<CgChevronLeftO onClick={prevMovie} size={32} color="#c6d1eb" />
-							<CgChevronRightO onClick={nextMovie} size={32} color="#c6d1eb" />
-						</div>
-					</PlayingNowHeader>
-
-					<PlayingNowContent
-						style={{ transform: `translateX(-${position}px)` }}
-					>
-						{series.map(serie => (
-							<PlayingNowCard key={serie.id} serie={serie} />
-						))}
-					</PlayingNowContent>
-				</PlayingNow>
+				<Slider series={series} />
 			</HomeSection>
 
 			<SideContent popularMovies={popularMovies} />
