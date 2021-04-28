@@ -8,25 +8,23 @@ export const Container = styled.div`
 		width: 188px;
 		height: 280px;
 	}
-	opacity: 0;
-	transform: translateY(25px);
-	animation: animeLeft 1.4s forwards;
+	transform: translateY(120px);
+	animation: animeLeft 0.65s forwards;
 
 	:nth-child(2) {
-		animation: animeLeft 1s forwards;
+		animation: animeLeft 0.75s forwards;
 	}
 
 	:nth-child(3) {
-		animation: animeLeft 0.6s forwards;
+		animation: animeLeft 0.85s forwards;
 	}
 
 	:nth-child(4) {
-		animation: animeLeft 0.2s forwards;
+		animation: animeLeft 0.95s forwards;
 	}
 
 	@keyframes animeLeft {
 		to {
-			opacity: 1;
 			transform: initial;
 		}
 	}
