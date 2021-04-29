@@ -6,6 +6,6 @@ module.exports = withImages({
 
 module.exports = {
 	images: {
-		domains: ['image.tmdb.org'],
+		domains: ['image.tmdb.org', 'cdn.myanimelist.net', 'wallpapercave.com',],
 	}
 }
