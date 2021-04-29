@@ -81,7 +81,11 @@ export const PopularMoviesCardMovieInfo = styled.div`
 		font-size: 0.875rem;
 		color: var(--text);
 		font-weight: bold;
+		max-width: 116px;
+
 		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	span {
