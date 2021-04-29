@@ -25,7 +25,7 @@ const Movies = ({ movies, popularSeries, popularMovies }) => {
 						<a>TV Show</a>
 					</Link>
 
-					<Link href="#">
+					<Link href="/animes">
 						<a>Anime</a>
 					</Link>
 				</NavHeader>
