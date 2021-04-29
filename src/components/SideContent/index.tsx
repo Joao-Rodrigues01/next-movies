@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import { FiSearch } from 'react-icons/fi';
+import { HiStar } from 'react-icons/hi';
 
 import {
 	Container,
@@ -57,6 +58,13 @@ const SideContent = ({ popularMovies, headerTitle }: SideContentProps) => {
 						<PopularMoviesCardMovieInfo>
 							<p>{headerTitle === 'Tv Shows' ? movie.name : movie.title}</p>
 							<span>Action, Fantasy</span>
+							<div>
+								<HiStar size={23} color="#FA7C05" />
+								<HiStar size={23} color="#FA7C05" />
+								<HiStar size={23} color="#FA7C05" />
+								<HiStar size={23} color="#FA7C05" />
+								<HiStar size={23} color="#DAE5FF" />
+							</div>
 						</PopularMoviesCardMovieInfo>
 
 						{headerTitle === 'Animes' ? (

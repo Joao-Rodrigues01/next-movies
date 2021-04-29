@@ -77,6 +77,9 @@ export const PopularMoviesCard = styled.div`
 `;
 
 export const PopularMoviesCardMovieInfo = styled.div`
+	display: flex;
+	flex-direction: column;
+
 	p {
 		font-size: 0.875rem;
 		color: var(--text);
@@ -92,5 +95,6 @@ export const PopularMoviesCardMovieInfo = styled.div`
 		color: var(--text-light);
 		font-size: 0.785rem;
 		font-weight: bold;
+		margin-bottom: 0.4rem;
 	}
 `;
