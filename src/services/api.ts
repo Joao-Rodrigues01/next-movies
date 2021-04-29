@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const tmdbApi = axios.create({
 	baseURL: 'https://api.themoviedb.org/3/',
 });
 
-export default api;
+export const animeApi = axios.create({
+	baseURL: 'https://api.jikan.moe/v3',
+});
