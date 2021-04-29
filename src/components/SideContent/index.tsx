@@ -13,7 +13,9 @@ import {
 
 type Movie = {
 	id: number;
+	mal_id: number;
 	title: string;
+	image_url: string;
 	name: string;
 	poster_path: string;
 	vote_average: number;
@@ -38,20 +40,30 @@ const SideContent = ({ popularMovies, headerTitle }: SideContentProps) => {
 				<h2>Popular {headerTitle}</h2>
 
 				{popularMovies.map(movie => (
-					<PopularMoviesCard key={movie.id}>
+					<PopularMoviesCard
+						key={headerTitle === 'Animes' ? movie.mal_id : movie.id}
+					>
 						<Image
-							src={`${imageBaseURL}${movie.poster_path}`}
-							alt={headerTitle === 'Movies' ? movie.title : movie.name}
+							src={
+								headerTitle === 'Animes'
+									? movie.image_url
+									: `${imageBaseURL}${movie.poster_path}`
+							}
+							alt={headerTitle === 'Tv Shows' ? movie.name : movie.title}
 							width={2000}
 							height={3000}
 							objectFit="cover"
 						/>
 						<PopularMoviesCardMovieInfo>
-							<p>{headerTitle === 'Movies' ? movie.title : movie.name}</p>
+							<p>{headerTitle === 'Tv Shows' ? movie.name : movie.title}</p>
 							<span>Action, Fantasy</span>
 						</PopularMoviesCardMovieInfo>
 
-						<span>AVG : {movie.vote_average}</span>
+						{headerTitle === 'Animes' ? (
+							''
+						) : (
+							<span>AVG : {movie.vote_average}</span>
+						)}
 					</PopularMoviesCard>
 				))}
 

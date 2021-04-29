@@ -20,6 +20,9 @@ type TvShow = {
 
 type Movie = {
 	id: number;
+	mal_id: number;
+	image_url: string;
+
 	title: string;
 	name: string;
 	poster_path: string;
@@ -48,7 +51,7 @@ const Home = ({ series, popularSeries, popularMovies }: HomeProps) => {
 						<a className="active">TV Show</a>
 					</Link>
 
-					<Link href="#">
+					<Link href="/animes">
 						<a>Anime</a>
 					</Link>
 				</NavHeader>
