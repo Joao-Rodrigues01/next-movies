@@ -1,14 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 
-import Link from 'next/link';
-import { HomeSection, NavHeader, MainBanner } from '../styles/home';
 import WatchButton from '../components/WatchButton';
 import PlusButton from '../components/PlusButton';
 import SideContent from '../components/SideContent';
-import api from '../services/api';
 import Slider from '../components/Slider';
+
+import { HomeSection, NavHeader, MainBanner } from '../styles/home';
+import { getMovies, getSeries, getTrendingSeries } from '../services/apiCalls';
 
 type TvShow = {
 	id: number;
@@ -20,6 +21,7 @@ type TvShow = {
 type Movie = {
 	id: number;
 	title: string;
+	name: string;
 	poster_path: string;
 	vote_average: number;
 };
@@ -76,7 +78,7 @@ const Home = ({ series, popularSeries, popularMovies }: HomeProps) => {
 				<Slider series={series} />
 			</HomeSection>
 
-			<SideContent popularMovies={popularMovies} />
+			<SideContent popularMovies={popularMovies} headerTitle="Movies" />
 		</main>
 	);
 };
@@ -84,24 +86,11 @@ const Home = ({ series, popularSeries, popularMovies }: HomeProps) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const { data } = await api.get(
-		`trending/tv/week?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt-br`
-	);
+	const { series } = await getTrendingSeries();
 
-	const series = data.results;
+	const { popularSeries } = await getSeries();
 
-	const response = await api.get(
-		'tv/on_the_air?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=1'
-	);
-	const popularSeries = response.data.results;
-
-	const movies = await api.get(
-		'https://api.themoviedb.org/3/movie/popular?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=1'
-	);
-
-	const popularMovies = movies.data.results.filter(
-		(_, index: number) => index <= 1
-	);
+	const { popularMovies } = await getMovies();
 
 	return {
 		props: {

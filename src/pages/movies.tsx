@@ -6,7 +6,7 @@ import PlusButton from '../components/PlusButton';
 import SideContent from '../components/SideContent';
 import Slider from '../components/Slider';
 import WatchButton from '../components/WatchButton';
-import api from '../services/api';
+import { getMovies, getSeries } from '../services/apiCalls';
 
 import { HomeSection, MainBanner, NavHeader } from '../styles/movies';
 
@@ -55,7 +55,7 @@ const Movies = ({ movies, popularSeries, popularMovies }) => {
 				<Slider series={movies} />
 			</HomeSection>
 
-			<SideContent popularMovies={popularSeries} />
+			<SideContent popularMovies={popularSeries} headerTitle="Tv Shows" />
 		</main>
 	);
 };
@@ -63,24 +63,9 @@ const Movies = ({ movies, popularSeries, popularMovies }) => {
 export default Movies;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const seriesResponse = await api.get(
-		'tv/on_the_air?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=1'
-	);
-	const popularSeries = seriesResponse.data.results.filter(
-		(_, index: number) => index <= 1
-	);
+	const { popularSeries } = await getSeries();
 
-	const moviesResponse = await api.get(
-		'https://api.themoviedb.org/3/movie/popular?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=1'
-	);
-
-	const movies = moviesResponse.data.results;
-
-	const popularMoviesResponse = await api.get(
-		'https://api.themoviedb.org/3/movie/popular?api_key=484e4f3139aad3bd78ac1031740719a8&language=pt_BR&page=2'
-	);
-
-	const popularMovies = popularMoviesResponse.data.results;
+	const { movies, popularMovies } = await getMovies();
 
 	return {
 		props: {
