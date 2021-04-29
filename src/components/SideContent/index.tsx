@@ -14,15 +14,17 @@ import {
 type Movie = {
 	id: number;
 	title: string;
+	name: string;
 	poster_path: string;
 	vote_average: number;
 };
 
 type SideContentProps = {
 	popularMovies: Movie[];
+	headerTitle: string;
 };
 
-const SideContent = ({ popularMovies }: SideContentProps) => {
+const SideContent = ({ popularMovies, headerTitle }: SideContentProps) => {
 	const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
 
 	return (
@@ -33,19 +35,19 @@ const SideContent = ({ popularMovies }: SideContentProps) => {
 			</SearchBarContainer>
 
 			<PopularMoviesContainer>
-				<h2>Popular Movies</h2>
+				<h2>Popular {headerTitle}</h2>
 
 				{popularMovies.map(movie => (
 					<PopularMoviesCard key={movie.id}>
 						<Image
 							src={`${imageBaseURL}${movie.poster_path}`}
-							alt={movie.title}
+							alt={headerTitle === 'Movies' ? movie.title : movie.name}
 							width={2000}
 							height={3000}
 							objectFit="cover"
 						/>
 						<PopularMoviesCardMovieInfo>
-							<p>{movie.title}</p>
+							<p>{headerTitle === 'Movies' ? movie.title : movie.name}</p>
 							<span>Action, Fantasy</span>
 						</PopularMoviesCardMovieInfo>
 
