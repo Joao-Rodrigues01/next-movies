@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.aside`
 	position: fixed;
-	height: 100vh;
+	height: 100%;
 	width: 234px;
 	background: #fff;
 	border-right: 2px solid #e4ecff;
@@ -12,6 +12,9 @@ export const Container = styled.aside`
 	h3 {
 		margin-bottom: 32px;
 		font-size: 1rem;
+	}
+	@media (max-width: 1400px) {
+		width: 180px;
 	}
 `;
 

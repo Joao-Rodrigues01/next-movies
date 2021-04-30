@@ -7,6 +7,11 @@ export const Container = styled.div`
 	img {
 		width: 188px;
 		height: 280px;
+
+		@media (max-width: 970px) {
+			width: 168px;
+			height: 260px;
+		}
 	}
 	transform: translateY(120px);
 	animation: animeLeft 0.65s forwards;

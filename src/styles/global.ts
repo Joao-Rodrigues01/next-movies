@@ -38,6 +38,8 @@ export default createGlobalStyle`
 		font: 400 16px Poppins, sans-serif;
 		-webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale;
+		overflow-x: hidden;
+
 	}
 
 	#__next {

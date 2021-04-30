@@ -9,6 +9,14 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	@media (max-width: 1400px) {
+		width: 280px;
+	}
+
+	@media (max-width: 970px) {
+		display: none;
+	}
 `;
 
 export const SearchBarContainer = styled.div`
@@ -22,6 +30,10 @@ export const SearchBarContainer = styled.div`
 	justify-content: center;
 	gap: 0.4rem;
 	padding-left: 1.5rem;
+
+	@media (max-width: 1400px) {
+		width: 180px;
+	}
 
 	input {
 		background: inherit;
