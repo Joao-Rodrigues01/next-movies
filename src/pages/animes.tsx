@@ -9,7 +9,28 @@ import WatchButton from '../components/WatchButton';
 import { getAnimes } from '../services/apiCalls';
 import { HomeSection, MainBanner, NavHeader } from '../styles/home';
 
-const Animes = ({ animes, popularAnimes }) => {
+type Anime = {
+	mal_id: number;
+	title: string;
+	image_url: string;
+};
+
+type Popular = {
+	id: number;
+	mal_id: number;
+	title: string;
+	image_url: string;
+	name: string;
+	poster_path: string;
+	vote_average: number;
+};
+
+type AnimesProps = {
+	animes: Anime[];
+	popularAnimes: Popular[];
+};
+
+const Animes = ({ animes, popularAnimes }: AnimesProps) => {
 	return (
 		<main>
 			<HomeSection>

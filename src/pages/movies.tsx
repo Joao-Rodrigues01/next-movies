@@ -10,7 +10,33 @@ import { getMovies, getSeries } from '../services/apiCalls';
 
 import { HomeSection, MainBanner, NavHeader } from '../styles/movies';
 
-const Movies = ({ movies, popularSeries, popularMovies }) => {
+type TvShow = {
+	id: number;
+	name: string;
+	title: string;
+	poster_path: string;
+	backdrop_path: string;
+};
+
+type Movie = {
+	id: number;
+	mal_id: number;
+	image_url: string;
+
+	title: string;
+	name: string;
+	poster_path: string;
+	backdrop_path: string;
+	vote_average: number;
+};
+
+type MoviesProps = {
+	movies: Movie[];
+	popularSeries: Movie[];
+	popularMovies: TvShow[];
+};
+
+const Movies = ({ movies, popularSeries, popularMovies }: MoviesProps) => {
 	const imageBaseHighResolutionURL =
 		'https://image.tmdb.org/t/p/t/p/w1920_and_h800_multi_faces';
 	return (

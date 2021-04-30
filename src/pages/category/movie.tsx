@@ -1,11 +1,28 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import PlayingNowCard from '../../components/PlayingNowCard';
-import SideContent from '../../components/SideContent';
 import { getMovies, getSeries } from '../../services/apiCalls';
 import * as S from '../../styles/category/content';
+import PlayingNowCard from '../../components/PlayingNowCard';
+import SideContent from '../../components/SideContent';
 
-const CategoryMovie = ({ movies, popularSeries }: any) => {
+type Movie = {
+	id: number;
+	mal_id: number;
+	image_url: string;
+
+	title: string;
+	name: string;
+	poster_path: string;
+	backdrop_path: string;
+	vote_average: number;
+};
+
+type MoviesProps = {
+	movies: Movie[];
+	popularSeries: Movie[];
+};
+
+const CategoryMovie = ({ movies, popularSeries }: MoviesProps) => {
 	return (
 		<>
 			<S.Container>
@@ -13,7 +30,7 @@ const CategoryMovie = ({ movies, popularSeries }: any) => {
 
 				<S.Content>
 					{movies.map(serie => (
-						<PlayingNowCard serie={serie} />
+						<PlayingNowCard key={serie.id} serie={serie} />
 					))}
 				</S.Content>
 			</S.Container>

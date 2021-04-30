@@ -5,7 +5,24 @@ import SideContent from '../../components/SideContent';
 import { getMovies, getSeries } from '../../services/apiCalls';
 import * as S from '../../styles/category/content';
 
-const CategoryTvShow = ({ series, popularMovies }: any) => {
+type Movie = {
+	id: number;
+	mal_id: number;
+	image_url: string;
+
+	title: string;
+	name: string;
+	poster_path: string;
+	backdrop_path: string;
+	vote_average: number;
+};
+
+type TvShowProps = {
+	series: Movie[];
+	popularMovies: Movie[];
+};
+
+const CategoryTvShow = ({ series, popularMovies }: TvShowProps) => {
 	return (
 		<>
 			<S.Container>
@@ -13,7 +30,7 @@ const CategoryTvShow = ({ series, popularMovies }: any) => {
 
 				<S.Content>
 					{series.map(serie => (
-						<PlayingNowCard serie={serie} />
+						<PlayingNowCard key={serie.id} serie={serie} />
 					))}
 				</S.Content>
 			</S.Container>
