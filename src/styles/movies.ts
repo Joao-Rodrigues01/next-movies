@@ -12,7 +12,9 @@ const appearFromLeft = keyframes`
 `;
 
 export const HomeSection = styled.section`
-	margin: 1.1rem 3rem;
+	margin: 1.1rem 0;
+	margin-left: 17.625rem;
+	margin-right: 2.6rem;
 	overflow: hidden;
 
 	animation: ${appearFromLeft} 1s;
