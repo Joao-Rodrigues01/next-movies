@@ -20,9 +20,15 @@ import {
 	FaVideo,
 } from 'react-icons/fa';
 
+import { useRouter } from 'next/dist/client/router';
 import { Container, Menu } from './styles';
 
 const SideMenu: React.FC = () => {
+	const { pathname } = useRouter();
+
+	const home =
+		pathname === '/' || pathname === '/animes' || pathname === '/movies';
+
 	return (
 		<Container>
 			<h3>Next Movies</h3>
@@ -30,8 +36,8 @@ const SideMenu: React.FC = () => {
 				<h1>MENU</h1>
 
 				<Link href="/">
-					<a className="active">
-						<HiHome size={20} color="#E9316E" />
+					<a className={home ? 'active' : ''}>
+						<HiHome size={20} color={home ? '#E9316E' : '#78889E'} />
 						Home
 					</a>
 				</Link>
@@ -93,22 +99,31 @@ const SideMenu: React.FC = () => {
 			<Menu>
 				<h1>CATEGORY</h1>
 				<Link href="/category/tvshow">
-					<a>
-						<RiSlideshow3Fill size={20} color="#78889E" />
+					<a className={pathname === '/category/tvshow' ? 'active' : ''}>
+						<RiSlideshow3Fill
+							size={20}
+							color={pathname === '/category/tvshow' ? '#E9316E' : '#78889E'}
+						/>
 						TV - Show
 					</a>
 				</Link>
 
 				<Link href="/category/movie">
-					<a>
-						<FaVideo size={20} color="#78889E" />
+					<a className={pathname === '/category/movie' ? 'active' : ''}>
+						<FaVideo
+							size={20}
+							color={pathname === '/category/movie' ? '#E9316E' : '#78889E'}
+						/>
 						Movie
 					</a>
 				</Link>
 
 				<Link href="/category/anime">
-					<a>
-						<GiAncientSword size={20} color="#78889E" />
+					<a className={pathname === '/category/anime' ? 'active' : ''}>
+						<GiAncientSword
+							size={20}
+							color={pathname === '/category/anime' ? '#E9316E' : '#78889E'}
+						/>
 						Anime
 					</a>
 				</Link>
