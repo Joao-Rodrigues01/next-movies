@@ -28,9 +28,10 @@ type Popular = {
 type AnimesProps = {
 	animes: Anime[];
 	popularAnimes: Popular[];
+	image_banner: string;
 };
 
-const Animes = ({ animes, popularAnimes }: AnimesProps) => {
+const Animes = ({ animes, popularAnimes, image_banner }: AnimesProps) => {
 	return (
 		<main>
 			<HomeSection>
@@ -50,7 +51,7 @@ const Animes = ({ animes, popularAnimes }: AnimesProps) => {
 
 				<MainBanner>
 					<Image
-						src="https://wallpapercave.com/wp/wp8079260.jpg"
+						src={image_banner}
 						alt="imagem do anime em destaque"
 						width={1920}
 						height={1080}
@@ -87,10 +88,13 @@ export default Animes;
 export const getServerSideProps: GetServerSideProps = async () => {
 	const { animes, popularAnimes } = await getAnimes();
 
+	const image_banner = 'https://wallpapercave.com/wp/wp8079260.jpg';
+
 	return {
 		props: {
 			animes,
 			popularAnimes,
+			image_banner,
 		},
 	};
 };
