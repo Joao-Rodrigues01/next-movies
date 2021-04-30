@@ -26,6 +26,7 @@ export const SearchBarContainer = styled.div`
 	input {
 		background: inherit;
 		color: var(--text);
+		width: 11.25rem;
 
 		&::placeholder {
 			color: var(--text-light);
