@@ -81,7 +81,11 @@ const Movies = ({ movies, popularSeries, popularMovies }: MoviesProps) => {
 				<Slider series={movies} />
 			</HomeSection>
 
-			<SideContent popularMovies={popularSeries} headerTitle="Tv Shows" />
+			<SideContent
+				popularMovies={popularSeries}
+				headerTitle="Tv Shows"
+				buttonLink="/category/tvshow"
+			/>
 		</main>
 	);
 };

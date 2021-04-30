@@ -39,7 +39,11 @@ const CategoryAnime = ({ animes, popularAnimes }: AnimesProps) => {
 				</S.Content>
 			</S.Container>
 
-			<SideContent popularMovies={popularAnimes} headerTitle="Animes" />
+			<SideContent
+				popularMovies={popularAnimes}
+				headerTitle="Animes"
+				buttonLink="/category/anime"
+			/>
 		</>
 	);
 };

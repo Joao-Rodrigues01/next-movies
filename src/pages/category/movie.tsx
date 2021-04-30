@@ -35,7 +35,11 @@ const CategoryMovie = ({ movies, popularSeries }: MoviesProps) => {
 				</S.Content>
 			</S.Container>
 
-			<SideContent popularMovies={popularSeries} headerTitle="Tv Show" />
+			<SideContent
+				popularMovies={popularSeries}
+				headerTitle="Tv Show"
+				buttonLink="/category/tvshow"
+			/>
 		</>
 	);
 };

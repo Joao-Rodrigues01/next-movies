@@ -73,7 +73,11 @@ const Animes = ({ animes, popularAnimes }: AnimesProps) => {
 				<AnimeSlider animes={animes} />
 			</HomeSection>
 
-			<SideContent popularMovies={popularAnimes} headerTitle="Animes" />
+			<SideContent
+				popularMovies={popularAnimes}
+				headerTitle="Animes"
+				buttonLink="/category/anime"
+			/>
 		</main>
 	);
 };

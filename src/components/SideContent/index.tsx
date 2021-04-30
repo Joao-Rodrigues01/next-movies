@@ -26,9 +26,14 @@ type Movie = {
 type SideContentProps = {
 	popularMovies: Movie[];
 	headerTitle: string;
+	buttonLink: string;
 };
 
-const SideContent = ({ popularMovies, headerTitle }: SideContentProps) => {
+const SideContent = ({
+	popularMovies,
+	headerTitle,
+	buttonLink,
+}: SideContentProps) => {
 	const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
 
 	return (
@@ -76,11 +81,7 @@ const SideContent = ({ popularMovies, headerTitle }: SideContentProps) => {
 					</PopularMoviesCard>
 				))}
 
-				<Link
-					href={
-						headerTitle === 'Movies' ? '/category/movie' : '/category/tvshow'
-					}
-				>
+				<Link href={buttonLink}>
 					<button type="button">See More</button>
 				</Link>
 			</PopularMoviesContainer>
