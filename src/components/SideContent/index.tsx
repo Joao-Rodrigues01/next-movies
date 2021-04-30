@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import { FiSearch } from 'react-icons/fi';
@@ -75,7 +76,13 @@ const SideContent = ({ popularMovies, headerTitle }: SideContentProps) => {
 					</PopularMoviesCard>
 				))}
 
-				<button type="button">See More</button>
+				<Link
+					href={
+						headerTitle === 'Movies' ? '/category/movie' : '/category/tvshow'
+					}
+				>
+					<button type="button">See More</button>
+				</Link>
 			</PopularMoviesContainer>
 		</Container>
 	);
