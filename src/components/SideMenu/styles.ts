@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.aside`
+	position: fixed;
 	height: 100vh;
 	width: 234px;
 	background: #fff;
