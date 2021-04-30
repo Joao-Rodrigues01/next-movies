@@ -90,7 +90,7 @@ export async function getAnimes(): Promise<getAnimesProps> {
 	const animesResponse = await animeApi.get('season/2021/winter');
 
 	const animes = animesResponse.data.anime.filter(
-		(_, index: number) => index <= 20
+		(_, index: number) => index <= 19
 	);
 
 	const popularAnimesResponse = await animeApi.get('top/anime/1/upcoming');
