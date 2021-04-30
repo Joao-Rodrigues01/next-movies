@@ -29,35 +29,35 @@ const SideMenu: React.FC = () => {
 			<Menu>
 				<h1>MENU</h1>
 
-				<Link href="#">
+				<Link href="/">
 					<a className="active">
 						<HiHome size={20} color="#E9316E" />
 						Home
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<HiShieldCheck size={20} color="#78889E" />
 						Community
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<FaCompass size={20} color="#78889E" />
 						Discover
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<FaTrophy size={20} color="#78889E" />
 						Awards
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<FaUser size={20} color="#78889E" />
 						Celebs
@@ -68,21 +68,21 @@ const SideMenu: React.FC = () => {
 			<Menu>
 				<h1>LIBRARY</h1>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<FaClock size={20} color="#78889E" />
 						Recent
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<FaStar size={20} color="#78889E" />
 						Top Rated
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<FaDownload size={20} color="#78889E" />
 						Downloaded
@@ -92,21 +92,21 @@ const SideMenu: React.FC = () => {
 
 			<Menu>
 				<h1>CATEGORY</h1>
-				<Link href="#">
+				<Link href="/category/tvshow">
 					<a>
 						<RiSlideshow3Fill size={20} color="#78889E" />
 						TV - Show
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/category/movie">
 					<a>
 						<FaVideo size={20} color="#78889E" />
 						Movie
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/category/anime">
 					<a>
 						<GiAncientSword size={20} color="#78889E" />
 						Anime
@@ -116,14 +116,14 @@ const SideMenu: React.FC = () => {
 
 			<Menu>
 				<h1>GENERAL</h1>
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<IoSettingsSharp size={20} color="#78889E" />
 						Settings
 					</a>
 				</Link>
 
-				<Link href="#">
+				<Link href="/">
 					<a>
 						<IoLogOut size={20} color="#78889E" />
 						Logout
